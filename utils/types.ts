@@ -1,15 +1,15 @@
-import { DocumentSnapshot } from "firebase/firestore";
+import { UserRoles } from "./enums";
 
- export type ModalsState ={
+export type ModalsState = {
   syncFrequency: boolean;
   sessionTimeout: boolean;
   language: boolean;
   theme: boolean;
   fontSize: boolean;
   cacheDuration: boolean;
-}
+};
 
- export type Settings = {
+export type Settings = {
   pushNotifications: boolean;
   smsAlerts: boolean;
   emailNotifications: boolean;
@@ -27,7 +27,7 @@ import { DocumentSnapshot } from "firebase/firestore";
   fontSize: string; // small, medium, large
   cacheDuration: string; // days
   lowStorageWarning: boolean;
-}
+};
 
 export type FamilyData = {
   id?: string;
@@ -52,4 +52,14 @@ export type FamilyData = {
   registeredBy: string; // UID of user who registered
   villageCode: string;
   villageName: string;
-}
+};
+
+export type User = {
+  email: string;
+  password: string;
+  name: string;
+  villageCode: string;
+  role: UserRole;
+};
+
+export type UserRole = (typeof UserRoles)[keyof typeof UserRoles];
